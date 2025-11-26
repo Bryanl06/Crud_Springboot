@@ -3,9 +3,7 @@ package com.example.crud.controller;
 import com.example.crud.model.Peliculas;
 import com.example.crud.service.PeliculasServ;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,5 +16,25 @@ public class PeliculasContro {
     @GetMapping
     public List<Peliculas> listar(){
         return serivce.listarPeliculas();
+    }
+
+    @GetMapping("/{id_pelicula}")
+    public Peliculas buscarpeliId(@PathVariable Integer id_pelicula){
+        return serivce.buscarpeliId(id_pelicula);
+    }
+
+    @PostMapping
+    public Peliculas agregarPeli(@RequestBody Peliculas peliculas){
+        return serivce.agregarPeli(peliculas);
+    }
+
+    @PutMapping("/{id_pelicula}")
+    public Peliculas actualizarPelicula(@PathVariable Integer id_pelicula, @RequestBody Peliculas peliculas){
+        return serivce.actualizarPelicula(id_pelicula, peliculas);
+    }
+
+    @DeleteMapping("/{id_pelicula}")
+    public void eliminarPeli(@PathVariable Integer id_pelicula){
+        serivce.eliminarPeli(id_pelicula);
     }
 }

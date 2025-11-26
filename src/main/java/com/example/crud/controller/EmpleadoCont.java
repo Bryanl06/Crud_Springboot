@@ -19,8 +19,13 @@ public class EmpleadoCont {
         return service.listar();
     }
 
+    @GetMapping("/{id_empleado}")
+    public Persona buscarporId(@PathVariable Integer id_empleado){
+        return service.buscarPorId(id_empleado);
+    }
+
     @PostMapping
-    public Persona agregar(@RequestBody Persona persona){
+    public Persona agregar(Persona persona){
         return service.agregar(persona);
     }
 
@@ -29,8 +34,8 @@ public class EmpleadoCont {
         return service.actualizar(id_empleado, persona);
     }
 
-    @DeleteMapping("/{id}")
-    public void eliminar(@PathVariable Integer id){
-        service.eliminar(id);
+    @DeleteMapping("/{id_empleado}")
+    public void eliminar(@PathVariable Integer id_empleado){
+        service.eliminar(id_empleado);
     }
 }

@@ -12,7 +12,7 @@ public class PeliculasServ {
     @Autowired
     private PeliculasRepo repository;
 
-    public Peliculas agregar(Peliculas peliculas){
+    public Peliculas agregarPeli(Peliculas peliculas){
         return repository.save(peliculas);
     }
 
@@ -20,12 +20,28 @@ public class PeliculasServ {
         return repository.findAll();
     }
 
-    public Peliculas actualizarPelicula(Integer id_pelicula,  Peliculas peliculas){
-        peliculas.setId_pelicula(id_pelicula);
-        return repository.save(peliculas);
+    public Peliculas buscarpeliId(Integer id_pelicula){
+        return repository.findById(id_pelicula).orElse(null);
     }
 
-    public void eliminar(Integer id_pelicula){
+    public Peliculas actualizarPelicula(Integer id_pelicula, Peliculas peliculas){
+        return repository.findById(id_pelicula).map(e ->{
+            e.setTitulo(peliculas.getTitulo());
+            e.setDuracion_minutos(peliculas.getDuracion_minutos());
+            e.setGenero(peliculas.getGenero());
+            e.setClasificacion(peliculas.getClasificacion());
+            e.setDirector(peliculas.getDirector());
+            e.setSinopsis(peliculas.getSinopsis());
+            e.setFecha_estreno(peliculas.getFecha_estreno());
+            e.setPopularidad(peliculas.getPopularidad());
+            e.setActiva(true);
+            e.setFecha_baja(peliculas.getFecha_baja());
+            return repository.save(e);
+        }).orElse(null);
+    }
+
+    public void eliminarPeli(Integer id_pelicula){
         repository.deleteById(id_pelicula);
     }
+
 }

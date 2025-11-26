@@ -2,8 +2,10 @@ package com.example.crud.service;
 
 import com.example.crud.model.Persona;
 import com.example.crud.repository.EmpleadoRepo;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -18,6 +20,10 @@ public class EmpleadoServ {
 
     public List<Persona> listar(){
         return repository.findAll();
+    }
+
+    public Persona buscarPorId(Integer id_empleado){
+        return repository.findById(id_empleado).orElse(null);
     }
 
     public Persona actualizar(Integer id_empleado, Persona persona){

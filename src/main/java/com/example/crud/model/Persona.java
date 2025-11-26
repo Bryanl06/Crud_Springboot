@@ -2,12 +2,15 @@ package com.example.crud.model;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+
 @Entity
 @Table(name = "Empleados")
 public class Persona {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_empleado")
+
     private Integer id_empleado;
     private String nombre;
     private String puesto;
@@ -15,10 +18,10 @@ public class Persona {
     private String email;
     private String telefono;
     private double salario_hora;
-    private String fecha_contratacion;
+    private LocalDate fecha_contratacion;
     private boolean activo;
 
-    public Integer getId_empleados() {
+    public Integer getId_empleado() {
         return id_empleado;
     }
 
@@ -74,11 +77,11 @@ public class Persona {
         this.salario_hora = salario_hora;
     }
 
-    public String getFecha_contratacion() {
+    public LocalDate getFecha_contratacion() {
         return fecha_contratacion;
     }
 
-    public void setFecha_contratacion(String fecha_contratacion) {
+    public void setFecha_contratacion(LocalDate fecha_contratacion) {
         this.fecha_contratacion = fecha_contratacion;
     }
 
