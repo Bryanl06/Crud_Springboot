@@ -25,12 +25,13 @@ public class EmpleadoCont {
     }
 
     @PostMapping
-    public Persona agregar(Persona persona){
+    public Persona agregar(@RequestBody Persona persona){
         return service.agregar(persona);
     }
 
     @PutMapping("/{id_empleado}")
     public Persona actualizar(@PathVariable Integer id_empleado,@RequestBody Persona persona){
+        persona.setId_empleado(id_empleado);
         return service.actualizar(id_empleado, persona);
     }
 

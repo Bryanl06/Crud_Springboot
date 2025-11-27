@@ -1,5 +1,6 @@
 package com.example.crud.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -10,6 +11,7 @@ public class Peliculas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_pelicula")
+    @Schema(description = "ID autoincrement", accessMode = Schema.AccessMode.READ_ONLY)
 
     private Integer id_pelicula;
     private String titulo;

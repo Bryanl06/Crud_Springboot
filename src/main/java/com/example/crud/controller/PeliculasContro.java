@@ -20,6 +20,7 @@ public class PeliculasContro {
 
     @GetMapping("/{id_pelicula}")
     public Peliculas buscarpeliId(@PathVariable Integer id_pelicula){
+
         return serivce.buscarpeliId(id_pelicula);
     }
 
@@ -30,6 +31,7 @@ public class PeliculasContro {
 
     @PutMapping("/{id_pelicula}")
     public Peliculas actualizarPelicula(@PathVariable Integer id_pelicula, @RequestBody Peliculas peliculas){
+        peliculas.setId_pelicula(id_pelicula);
         return serivce.actualizarPelicula(id_pelicula, peliculas);
     }
 

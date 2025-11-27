@@ -2,10 +2,8 @@ package com.example.crud.service;
 
 import com.example.crud.model.Persona;
 import com.example.crud.repository.EmpleadoRepo;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
