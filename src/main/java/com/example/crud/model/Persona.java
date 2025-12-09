@@ -11,8 +11,8 @@ public class Persona {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_empleado")
-    @Schema(description = "ID autoincrement", accessMode = Schema.AccessMode.READ_ONLY)
 
+    @Schema(description = "ID autoincrement", accessMode = Schema.AccessMode.READ_ONLY)
     private Integer id_empleado;
     private String nombre;
     private String puesto;
@@ -21,6 +21,7 @@ public class Persona {
     private String telefono;
     private double salario_hora;
     private LocalDate fecha_contratacion;
+    @Schema(description = "Active es true", accessMode = Schema.AccessMode.READ_ONLY)
     private boolean activo;
 
     public Integer getId_empleado() {

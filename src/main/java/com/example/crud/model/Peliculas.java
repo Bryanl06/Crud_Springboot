@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "Peliculas")
@@ -113,4 +114,5 @@ public class Peliculas {
     public void setFecha_baja(LocalDate fecha_baja) {
         this.fecha_baja = fecha_baja;
     }
+
 }

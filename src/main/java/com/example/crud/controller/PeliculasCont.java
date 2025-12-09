@@ -9,7 +9,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/peliculas")
-public class PeliculasContro {
+public class PeliculasCont {
+
     @Autowired
     private PeliculasServ serivce;
 
@@ -20,7 +21,6 @@ public class PeliculasContro {
 
     @GetMapping("/{id_pelicula}")
     public Peliculas buscarpeliId(@PathVariable Integer id_pelicula){
-
         return serivce.buscarpeliId(id_pelicula);
     }
 
