@@ -33,9 +33,13 @@ public class EmpleadoServ {
             e.setTelefono(persona.getTelefono());
             e.setFecha_contratacion(persona.getFecha_contratacion());
             e.setSalario_hora(persona.getSalario_hora());
-            e.setActivo(true);
+            e.setActivo(persona.getActivo());
             return repository.save(e);
         }).orElse(null);
+    }
+
+    public List<Persona> listarActivo(boolean activo){
+        return repository.findByActivo(activo);
     }
 
     public void eliminar(Integer id_empleado){

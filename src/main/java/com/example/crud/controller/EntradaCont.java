@@ -23,6 +23,7 @@ public class EntradaCont {
         return service.buscarPorId(id_entrada);
     }
 
+
     @PostMapping
     public Entrada agregarEntr(@RequestBody Entrada entrada){
         return service.agregarEntra(entrada);

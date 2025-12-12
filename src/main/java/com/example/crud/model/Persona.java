@@ -21,7 +21,7 @@ public class Persona {
     private String telefono;
     private double salario_hora;
     private LocalDate fecha_contratacion;
-    @Schema(description = "Active es true", accessMode = Schema.AccessMode.READ_ONLY)
+    //@Schema(description = "Active es true", accessMode = Schema.AccessMode.READ_ONLY)
     private boolean activo;
 
     public Integer getId_empleado() {
@@ -88,11 +88,11 @@ public class Persona {
         this.fecha_contratacion = fecha_contratacion;
     }
 
-    public boolean isActivo() {
-        return activo;
-    }
-
     public void setActivo(boolean activo) {
         this.activo = activo;
+    }
+
+    public boolean getActivo() {
+        return activo;
     }
 }

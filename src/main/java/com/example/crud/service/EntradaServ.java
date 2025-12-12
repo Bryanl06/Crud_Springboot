@@ -35,6 +35,7 @@ public class EntradaServ {
         }).orElse(null);
     }
 
+
     public void eliminar(Integer id_entrada){
         repository.deleteById(id_entrada);
     }

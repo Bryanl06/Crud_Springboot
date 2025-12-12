@@ -19,6 +19,16 @@ public class EmpleadoCont {
         return service.listar();
     }
 
+    @GetMapping("/activos")
+    public List<Persona> listarActivos(){
+        return service.listarActivo(true);
+    }
+
+    @GetMapping("/inactivos")
+    public List<Persona> listarInactivos(){
+        return service.listarActivo(false);
+    }
+
     @GetMapping("/{id_empleado}")
     public Persona buscarporId(@PathVariable Integer id_empleado){
         return service.buscarPorId(id_empleado);
