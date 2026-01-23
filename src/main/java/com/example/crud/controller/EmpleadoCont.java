@@ -49,4 +49,9 @@ public class EmpleadoCont {
     public void eliminar(@PathVariable Integer id_empleado){
         service.eliminar(id_empleado);
     }
+
+    @PostMapping("/migrar")
+    public String migrar(){
+        return service.migrarAMongo();
+    }
 }

@@ -2,6 +2,7 @@ package com.example.crud.service;
 
 import com.example.crud.model.Persona;
 import com.example.crud.repository.EmpleadoRepo;
+import com.example.crud.mongo.EmpleadoMongoRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,8 +13,14 @@ public class EmpleadoServ {
     @Autowired
     private EmpleadoRepo repository;
 
+    @Autowired
+    private EmpleadoMongoRepo mongoRepository;
+
     public Persona agregar(Persona persona){
-        return repository.save(persona);
+        Persona personaGuardada = repository.save(persona);
+        mongoRepository.save(personaGuardada);
+
+        return personaGuardada;
     }
 
     public List<Persona> listar(){
@@ -34,7 +41,13 @@ public class EmpleadoServ {
             e.setFecha_contratacion(persona.getFecha_contratacion());
             e.setSalario_hora(persona.getSalario_hora());
             e.setActivo(persona.getActivo());
-            return repository.save(e);
+
+            // Guardamos en MySQL
+            Persona actualizado = repository.save(e);
+            // Sincronizamos con MongoDB
+            mongoRepository.save(actualizado);
+
+            return actualizado;
         }).orElse(null);
     }
 
@@ -43,6 +56,27 @@ public class EmpleadoServ {
     }
 
     public void eliminar(Integer id_empleado){
+        // Eliminamos de MySQL
         repository.deleteById(id_empleado);
+        // Eliminamos de MongoDB
+        mongoRepository.deleteById(id_empleado);
+    }
+
+    public String migrarAMongo() {
+        try {
+            // 1. Traemos los datos de MySQL
+            List<Persona> listaMysql = repository.findAll();
+
+            if (listaMysql.isEmpty()) {
+                return "No hay empleados en MySQL para migrar.";
+            }
+
+            // 2. Los guardamos en MongoDB Compass
+            mongoRepository.saveAll(listaMysql);
+
+            return "Migración exitosa. Se pasaron " + listaMysql.size() + " registros a MongoDB.";
+        } catch (Exception e) {
+            return "Error al migrar: " + e.getMessage();
+        }
     }
 }

@@ -2,13 +2,16 @@ package com.example.crud.model;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "Empleados")
+@Document(collection = "empleados")
 public class Persona {
-    @Id
+    @jakarta.persistence.Id
+    @org.springframework.data.annotation.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_empleado")
 

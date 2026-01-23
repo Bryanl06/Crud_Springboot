@@ -15,6 +15,7 @@ public class Proyeccion {
     @Schema(description = " ID Autoincrement", accessMode = Schema.AccessMode.READ_ONLY)
     private Integer id_proyeccion;
     private Integer id_pelicula;
+    @Schema(description = "ID Autoincrement", accessMode = Schema.AccessMode.READ_ONLY)
     private Integer id_sala;
     private LocalDate fecha_hora_inicio;
     private LocalDate fecha_hora_fin;
